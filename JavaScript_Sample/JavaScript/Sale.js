@@ -1,18 +1,41 @@
+const productos = [
+  {
+    id: 1,
+    nombre: "Mezcla original 200g 500 Yenes",
+    precio: 500,
+  },
+  {
+    id: 2,
+    nombre: "Mezcla original 500g 900 Yenes",
+    precio: 900,
+  },
+  {
+    id: 3,
+    nombre: "Mezcla especial 200g 700 Yenes",
+    precio: 700,
+  },
+  {
+    id: 4,
+    nombre: "Mezcla especial 500g 1200 Yenes",
+    precio: 1200,
+  }
+]
 
 const precioElement = document.getElementById("producto");
 const numeroElement = document.getElementById("numero");
 let compras = [];
 
 function add() {
-  const precio = parseInt(precioElement.value);
+  const elementoId  = parseInt(precioElement.value);
+  const producto = productos.find(item => item.id == elementoId);
   const numero = parseInt(numeroElement.value);
 
   let compra = {
-    precio: parseInt(precio),
+    producto: producto,
     numero: parseInt(numero),
   };
 
-  const newCompra = compras.findIndex((item) => item.precio === compra.precio) // --1
+  const newCompra = compras.findIndex((item) => item.producto.id === compra.producto.id) // --1
   if(compras.length < 1 || newCompra === -1) {
     compras.push(compra)
   } else {
@@ -45,7 +68,7 @@ function add() {
 //   }
 // }
 
-  window.alert(`${display()}\nSubtotal${subtotal()}Yenes`);
+  window.alert(`${display()}\nSubtotal ${subtotal()} Yenes`);
   precioElement.value = "";
   numeroElement.value = "";
 }
@@ -61,13 +84,13 @@ function add() {
 
 function display() {
   return compras.map(compra => {
-    return `${compra.precio}Yenes${compra.numero}Cantidad`
+    return `Producto: ${compra.producto.nombre}, Precio: ${compra.producto.precio} Yenes, Cantidad: ${compra.numero}`;
     }).join("\n");
 };
 
 function subtotal() {
   return compras.reduce((prev, compra) => {
-    return prev + compra.precio * compra.numero
+    return prev + compra.producto.precio * compra.numero
   }, 0);
 }
 
@@ -84,7 +107,7 @@ function subtotal() {
 function calc() {
   const sum = subtotal();
   const tarifa = calcTarifaFromCompra(sum);
-  window.alert(`Elsubtotalesde${sum}Latarifadeenvioesde${tarifa}yenes.Elmontototales${sum + tarifa}yenes`);
+  window.alert(`${display()}\nEl subtotal es de ${sum}, La tarifa de envio es de ${tarifa} yenes. El monto total es ${sum + tarifa} yenes`);
   compras = [];
   precioElement.value= "";
   numeroElement.value = "";
