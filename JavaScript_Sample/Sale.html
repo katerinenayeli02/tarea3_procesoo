@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>DIC cafe</title>
+    <link href="css/normalize.css" rel="stylesheet">
+    <link href="css/sale.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;700&display=swap" rel="stylesheet">
+  </head>
+  <body>
+    <section class="section_inner">
+      <div class="section_title">
+        <h1>Venta de granos de cafe</h1>
+      </div>
+    </section>
+
+    <section class="section_inner menu_section">
+      <div class="center">
+        <!-- <h1 class="menu_title">ラインナップ</h1> -->
+         <h1>Pongase en fila</h1>
+      </div>
+      <ul class="menu_list coffee_menu">
+        <li class="caffee_menu_list_item">
+          <div class="caffee_menu_content">
+            <h2 class="menu_item_title">Mezcla original 200g</h2>
+            <p class="caffee_menu_price">500Yenes</p>
+          </div>
+          <img src="Imagenes/sample_cafe1.jpg" class="caffee_menu_image">
+        </li>
+        <li class="caffee_menu_list_item">
+          <div class="caffee_menu_content">
+            <h2 class="menu_item_title">Mezcla original 500g</h2>
+            <p class="caffee_menu_price">900Yenes</p>
+          </div>
+          <img src="Imagenes/sample_cafe1.jpg" class="caffee_menu_image">
+        </li>
+        <li class="caffee_menu_list_item">
+          <div class="caffee_menu_content">
+            <h2 class="menu_item_title">Mezcla especial 200g</h2>
+            <p class="caffee_menu_price">700Yenes</p>
+          </div>
+          <img src="Imagenes/sample_cafe3.jpg" class="caffee_menu_image">
+        </li>
+        <li class="caffee_menu_list_item">
+          <div class="caffee_menu_content">
+            <h2 class="menu_item_title">Mezcla especial 500g</h2>
+            <p class="caffee_menu_price">1200Yenes</p>
+          </div>
+          <img src="Imagenes/sample_cafe3.jpg" class="caffee_menu_image">
+        </li>
+      </ul>
+      <h2>Información de envío</h2>
+      <ul>
+        <li>・La tarifa de envío es de 500 yenes si el monto total es inferior a 2000 yenes</li>
+        <li>・250 yenes para pedidos superiores a 2000 yenes</li>
+        <li>・Gratis para pedidos superiores a 3000 yenes</li>
+      </ul>
+    </section>
+
+    <section class="section_inner">
+      <h2>Orden</h2>
+      <form>
+        <p>Por favor seleccione un producto</p>
+        <div>
+          <select id="producto" required>
+            <option hidden value="0">por favor seleccione</option>
+            <option value="500">Mezcla original 200g 500Yenes</option>
+            <option value="900">Mezcla original 500g 900Yenes</option>
+            <option value="700">Mezcla especial 200g 700Yenes</option>
+            <option value="1200">Mezcla especial 500g 1200Yenes</option>
+          </select>
+          <p>por favor seleccione cantidad</p>
+          <input type="number" min="1" max="5" id="numero" required>
+        </div>
+        <br>
+        <input type="button" class="btn" value="Agregar" onclick="add()">
+        <input type="button" class="btn" value="Monto total" onclick="calc()">
+      </form>
+    </section>
+    <script type="text/javascript" src="JavaScript/Sale.js"></script>
+  </body>
+</html>
